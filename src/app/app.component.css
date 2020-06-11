@@ -1,0 +1,13 @@
+.gesture__zone {
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 3px;
+    height: 700px;
+    text-align: center;
+    overflow: auto;
+    width:350px;
+  }
+  .container{
+    background-color: #cce2ff;
+  }

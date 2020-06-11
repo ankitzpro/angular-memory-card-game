@@ -1,0 +1,25 @@
+
+
+<div>Memorize the Flashing Squares then Recreates the same when the countdown starts</div>
+<hr>
+<form [formGroup]="myForm"   (submit)="onSubmit()">
+  <div class="form-group">
+    <input type="email" formControlName="email" class="form-control" placeholder="Email" required>
+  </div>
+  <!-- <label class="radio-inline m-1">
+        <input type="radio" formControlName="level" value="Easy" checked>
+        <label class="radio-inline control-label">Begginer</label>
+      </label>
+      <label class="radio-inline m-1">
+        <input type="radio" formControlName="level" value="Medium">
+        <label class="radio-inline control-label">Intermediate</label>
+      </label>
+      <label class="radio-inline m-1">
+        <input type="radio" formControlName="level" value="Advance">
+        <label class="radio-inline control-label">Advanced</label>
+      </label> -->
+  <div class="form-group">
+    <button type="submit"  class="btn btn-lg btn-block btn-primary ">Start</button>
+  </div>
+
+</form>
