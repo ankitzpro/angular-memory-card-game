@@ -2,14 +2,16 @@
 <hr>
 <div class=row>
         <div class=" col-sm-6 "><h4>Level {{level+1}}</h4></div>
-        <div class="col-sm-6 text-danger"><i class="fa fa-clock-o" aria-hidden="true"></i><h3>{{(seconds).toFixed(1)}}</h3></div>
+        <div [hidden]="!showwait" class=" col-sm-6 "><h4>Wait</h4></div>
+        <div [hidden]="!showstart" class=" col-sm-6 "><h4>Start</h4></div>
+        <div [hidden]="!showtimer" class="col-sm-6 text-danger"><i class="fa fa-clock-o" aria-hidden="true"></i><h3>{{(seconds).toFixed(1)}}</h3></div>
     </div>
  <hr>   
 <div class="col-md-12 " >
 <div class="row" >
     <div *ngFor="let in of counter(36) ;let i = index" style="width:15%" >
         
-            <div #crd (click)="cardClick( i)" style="width:40px;height:40px" class="btn btn-primary m-2 p-2" data-toggle="tooltip" data-placement="top"></div>
+            <div #crd (click)="cardClick( i)" style="width:40px;height:40px" class="btn btn-secondary m-2 p-2" data-toggle="tooltip" data-placement="top"></div>
         </div>
     </div> 
 </div>

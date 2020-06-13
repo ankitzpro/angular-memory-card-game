@@ -16,6 +16,9 @@ clicked=0;
 i=3;
 seconds=20;
 intervalId: number = 0;
+showstart=false;
+showwait=true;
+showtimer=false;
 @ViewChildren('crd') components:QueryList<ElementRef>;
   ngOnInit() {
     
@@ -46,19 +49,24 @@ public randomArray(i){
 
 function myLoop() {    
   setTimeout(function() {   
-     const a= Math.floor(Math.random() * 29) + 0 ;
+     const a= Math.floor(Math.random() * 29) + 0 ;1
+     if ( _this.arr.length>0) 
+     {
+       if(_this.arr[_this.arr.length - 1] == a)
+  myLoop();
+}
     _this.arr.push(a);
-    _this.components.toArray()[a].nativeElement.classList.add('btn-secondary');
+    _this.components.toArray()[a].nativeElement.classList.remove('btn-secondary');
+    _this.components.toArray()[a].nativeElement.classList.add('btn-primary');
     setInterval(() => {
-           _this.components.toArray()[a].nativeElement.classList.remove('btn-secondary');
+           _this.components.toArray()[a].nativeElement.classList.remove('btn-primary');_this.components.toArray()[a].nativeElement.classList.add('btn-secondary');
         }, 1000);
     j++;                    
     if (j <  i) {           
       myLoop();             
     }
     else{
-      _this.click=true;
-      _this.countDown();
+    _this.startShow();
     }
                          
   }, 2000)
@@ -73,6 +81,11 @@ myLoop();
 cardClick( index) {
   if(this.click==true && this.clicked<this.i){
   if(this.arr[this.clicked]==index){
+for(var j=0;j<this.components.toArray().length;j++){
+    this.components.toArray()[index].nativeElement.classList.remove('btn-primary');
+}
+this.components.toArray()[index].nativeElement.classList.remove('btn-secondary');
+    this.components.toArray()[index].nativeElement.classList.add('btn-primary');
   }
   else{
     this.service.level++;
@@ -93,6 +106,9 @@ cardClick( index) {
   }
   }
 private countDown(): void {
+
+  this.showstart=false;
+  this.showtimer=true;
     this.intervalId = window.setInterval(() => {
       this.seconds -= 0.1;
       if ((this.seconds).toFixed(1) === '0.1') {
@@ -102,6 +118,16 @@ private countDown(): void {
         this.routers.navigate(['/timer'])
       } 
     }, 100);
+  }
+
+  startShow(){
+    this.click=true;
+    this.showwait=false;
+      this.showstart=true;
+    setTimeout(() => {
+           
+    this.countDown();  
+        }, 1000);
   }
 clearTimer(): void { clearInterval(this.intervalId); }
 }
