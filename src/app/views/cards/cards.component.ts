@@ -49,7 +49,7 @@ public randomArray(i){
 
 function myLoop() {    
   setTimeout(function() {   
-     const a= Math.floor(Math.random() * 29) + 0 ;1
+     const a= Math.floor(Math.random() * 29) + 0 ;
      if ( _this.arr.length>0) 
      {
        if(_this.arr[_this.arr.length - 1] == a)
